@@ -13,11 +13,10 @@ public class Controller {
         return false;
     }
     public Map<Integer, String> getTreeMap(){
-
         return treeMap;
     }
     public boolean deleteById(Integer pos){
-        if (!treeMap.containsKey(pos)){
+        if (treeMap.containsKey(pos)){
             treeMap.remove(pos);
             return true;
         }
@@ -25,4 +24,7 @@ public class Controller {
     }
 
 
+    public String getName(Integer key) {
+        return treeMap.get(key);
+    }
 }

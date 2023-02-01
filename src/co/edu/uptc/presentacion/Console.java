@@ -2,6 +2,7 @@ package co.edu.uptc.presentacion;
 
 import co.edu.uptc.logica.control.Controller;
 
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -25,28 +26,29 @@ public class Console {
                     mostrarTreeMap();
                     break;
                 case 2:
-                    Integer id=null;
-                    String nombre=null;
+                    Integer id = null;
+                    String nombre = null;
                     do {
                         System.out.println("ingrese un id");
-                        id=sc.nextInt();
+                        id = sc.nextInt();
                         System.out.println("ingrese un nombre");
-                        nombre=sc.nextLine();
-                    controller.add(id,nombre);
-                    if(!controller.add(id,nombre)){
-                        System.out.println("ingrese valores con sentido");
-                    }
-                    }while(!controller.add(id,nombre));
+                        sc.next();
+                        nombre = sc.nextLine();
+                        controller.add(id, nombre);
+                        if (!controller.add(id, nombre)) {
+                            System.out.println("ingrese valores con sentido");
+                        }
+                    } while (!controller.add(id, nombre));
                     break;
                 case 3:
                     do {
                         System.out.println("ingrese un id");
-                        id=sc.nextInt();
+                        id = sc.nextInt();
                         controller.deleteById(id);
-                        if(!controller.deleteById(id)){
+                        if (!controller.deleteById(id)) {
                             System.out.println("ingrese valores con sentido");
                         }
-                    }while(!controller.deleteById(id));
+                    } while (!controller.deleteById(id));
                     break;
 
             }
@@ -55,9 +57,12 @@ public class Console {
     }
 
     private void mostrarTreeMap() {
-        /*for (var i=0;i<controller.getTreeMap().size();i++) {
-            System.out.println(controller.getTreeMap().get(i).);
-        }
+        Iterator iterator=controller.getTreeMap().keySet().iterator();
+      while (iterator.hasNext()){
+          Integer key = (Integer) iterator.next();
+          System.out.println("Clave: " + key + " -> Valor: " + controller.getName(key).toString());
+      }
+
 
     }
 }
