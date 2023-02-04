@@ -60,9 +60,10 @@ public class Console {
         Iterator iterator=controller.getTreeMap().keySet().iterator();
       while (iterator.hasNext()){
           Integer key = (Integer) iterator.next();
-          System.out.println("Clave: " + key + " -> Valor: " + controller.getName(key).toString());
+          System.out.println("Clave: " + key + " -> Valor: " + controller.getTreeMap().get(key));
       }
 
 
     }
+
 }

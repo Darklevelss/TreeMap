@@ -22,9 +22,7 @@ public class Controller {
         }
         return false;
     }
-
-
-    public String getName(Integer key) {
-        return treeMap.get(key);
+    public TreeMap<Integer,String> devolverAlReves(){
+        return
     }
 }
