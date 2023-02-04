@@ -22,7 +22,5 @@ public class Controller {
         }
         return false;
     }
-    public TreeMap<Integer,String> devolverAlReves(){
-        return
-    }
+
 }
