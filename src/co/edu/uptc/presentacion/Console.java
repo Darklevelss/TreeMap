@@ -2,9 +2,8 @@ package co.edu.uptc.presentacion;
 
 import co.edu.uptc.logica.control.Controller;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+import java.util.Map.Entry;
 
 public class Console {
     Scanner sc = new Scanner(System.in);
@@ -26,14 +25,17 @@ public class Console {
                     mostrarTreeMap();
                     break;
                 case 2:
-                    Integer id = null;
-                    String nombre = null;
+
+                    Integer id;
+                    String nombre;
                     do {
                         System.out.println("ingrese un id");
+
                         id = sc.nextInt();
                         System.out.println("ingrese un nombre");
                         sc.next();
                         nombre = sc.nextLine();
+                        sc.next();
                         controller.add(id, nombre);
                         if (!controller.add(id, nombre)) {
                             System.out.println("ingrese valores con sentido");
@@ -57,13 +59,11 @@ public class Console {
     }
 
     private void mostrarTreeMap() {
-        Iterator iterator=controller.getTreeMap().keySet().iterator();
-      while (iterator.hasNext()){
-          Integer key = (Integer) iterator.next();
-          System.out.println("Clave: " + key + " -> Valor: " + controller.getTreeMap().get(key));
-      }
+        System.out.println(controller.getTreeMap().size());
 
-
+        for (Map.Entry<Integer,String>entry:controller.getTreeMap().entrySet()) {
+            System.out.println("key: "+entry.getKey()+"|value: "+entry.getValue());
+        }
     }
 
 }

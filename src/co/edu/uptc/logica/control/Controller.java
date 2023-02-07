@@ -12,7 +12,8 @@ public class Controller {
         }
         return false;
     }
-    public Map<Integer, String> getTreeMap(){
+
+    public TreeMap<Integer, String> getTreeMap(){
         return treeMap;
     }
     public boolean deleteById(Integer pos){
