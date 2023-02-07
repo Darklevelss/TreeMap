@@ -1,14 +1,11 @@
 package co.edu.uptc.presentacion;
-
-import co.edu.uptc.logica.control.Controller;
-
 import java.util.*;
-import java.util.Map.Entry;
+
 
 public class Console {
     Scanner sc = new Scanner(System.in);
     int op = 6;
-    Controller controller = new Controller();
+    TreeMap<Integer,String> details =new TreeMap<>();
 
     public void menu() {
         do {
@@ -28,42 +25,41 @@ public class Console {
 
                     Integer id;
                     String nombre;
-                    do {
-                        System.out.println("ingrese un id");
 
-                        id = sc.nextInt();
-                        System.out.println("ingrese un nombre");
-                        sc.next();
-                        nombre = sc.nextLine();
-                        sc.next();
-                        controller.add(id, nombre);
-                        if (!controller.add(id, nombre)) {
-                            System.out.println("ingrese valores con sentido");
-                        }
-                    } while (!controller.add(id, nombre));
+                    System.out.println("ingrese un id");
+
+                    id = sc.nextInt();
+                    System.out.println("ingrese un nombre");
+                    sc.next();
+                    nombre = sc.nextLine();
+
+                    details.put(id, nombre);
+
+
                     break;
                 case 3:
-                    do {
-                        System.out.println("ingrese un id");
-                        id = sc.nextInt();
-                        controller.deleteById(id);
-                        if (!controller.deleteById(id)) {
-                            System.out.println("ingrese valores con sentido");
-                        }
-                    } while (!controller.deleteById(id));
+
+                    System.out.println("ingrese un id");
+                    id = sc.nextInt();
+                    details.remove(id);
+
+                    System.out.println("ingrese valores con sentido");
                     break;
+
 
             }
 
-        } while (op != 0);
+
+        }while (op != 0) ;
     }
 
-    private void mostrarTreeMap() {
-        System.out.println(controller.getTreeMap().size());
-
-        for (Map.Entry<Integer,String>entry:controller.getTreeMap().entrySet()) {
-            System.out.println("key: "+entry.getKey()+"|value: "+entry.getValue());
+        private void mostrarTreeMap () {
+            System.out.println("el tamaño del treeMap es de: "+details.size());
+            Set<Integer> keyVal=details.keySet();
+            for (Integer i:keyVal) {
+                System.out.println("key: " + i+ "|value: " + details.get(i));
+            }
         }
-    }
 
-}
+
+    }
