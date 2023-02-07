@@ -7,13 +7,17 @@ public class Console {
     int op = 6;
     TreeMap<Integer,String> details =new TreeMap<>();
 
+
     public void menu() {
+        details.put(1,"sarai");
+        details.put(2,"daniela");
+        details.put(3,"Carolina");
+        details.put(4,"Valentina");
         do {
             System.out.println("""
                     <<<<menú>>>>
                     1.mostrar treemap
-                    2.añadir al treemap
-                    3.borrar un elemento del treemap
+                    2.borrar un elemento del treemap
                     0.salir
                     """);
             op = sc.nextInt();
@@ -21,9 +25,9 @@ public class Console {
                 case 1:
                     mostrarTreeMap();
                     break;
-                case 2:
+                /*case 2:
 
-                    Integer id;
+
                     String nombre;
 
                     System.out.println("ingrese un id");
@@ -36,9 +40,10 @@ public class Console {
                     details.put(id, nombre);
 
 
-                    break;
-                case 3:
+                    break;*/
+                case 2:
 
+                    Integer id;
                     System.out.println("ingrese un id");
                     id = sc.nextInt();
                     details.remove(id);
